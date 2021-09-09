@@ -1,0 +1,91 @@
+/* ============================================================================
+   Verileri SELECT komutu ile veritabanýndan çekerken filtreleme yapmak için 
+   
+   Syntax
+   --------
+    SELECT ile birlikte WHERE komutu kullanýlabilir. 
+   
+    SELECT sutün1, sutün2
+        ...
+    FROM  tablo_adý WHERE koþul;
+==============================================================================*/
+
+CREATE TABLE ogrenciler3(
+id NUMBER(9),
+isim VARCHAR2(50),
+adres VARCHAR2(100),
+sinav_notu NUMBER(3)
+);
+
+INSERT INTO ogrenciler3 VALUES(123, 'Ali Can', 'Ankara',75);
+INSERT INTO ogrenciler3 VALUES(124, 'Merve Gul', 'Ankara',85);
+INSERT INTO ogrenciler3 VALUES(125, 'Kemal Yasa', 'Istanbul',85);
+    
+SELECT * FROM ogrenciler3;
+    
+--Ornek 1 : Sinav notu 80 den buyuk olan ogrencilerin tum bilgilerini listele...
+
+SELECT*FROM ogrenciler3 WHERE sinav_notu>80;
+
+--Ornek 2 : Adresi Ankara olan ogrencilerin isim, ev ve adres bilgilerini listele...
+
+SELECT isim, adres FROM ogrenciler3 WHERE adres='Ankara';
+-- * hersey demektir... Biseyler belirtirsek ona gore yazdirmis oluruz...
+
+--Ornek 3: id si 124 olan ogrencilerin tum bilgilerini silelim...
+
+DELETE FROM ogrenciler3 WHERE id=124;
+
+SELECT * FROM ogrenciler3; -- tabloyu goormek icin bu komut gerekiyor...
+
+
+--------------------------------SELECT BETWEEN----------------------------------
+
+CREATE TABLE personel1(
+id CHAR(5),
+isim VARCHAR2(50),
+maas NUMBER(5)
+);
+
+INSERT INTO personel1 VALUES('10001', 'Ahmet Aslan', 7000);
+INSERT INTO personel1 VALUES( '10002', 'Mehmet Yilmaz' ,12000);
+INSERT INTO personel1 VALUES('10003', 'Meryem ', 7215);
+INSERT INTO personel1 VALUES('10004', 'Veli Han', 5000);
+INSERT INTO personel1 VALUES('10005', 'Mustafa Ali', 5500);
+INSERT INTO personel1 VALUES('10005', 'Ayse Can', 4000);
+
+SELECT * FROM personel1;
+DROP TABLE personel1;
+--Ornek 4 : id si 10002 ile 10005 arasinda olan personelin bilgilerini listele...
+
+-- 1. yol ;
+SELECT*FROM personel1 WHERE id BETWEEN '10002' And '10005'; 
+-- 10002 ve 10005 bu rakamlar ve arasindakiler dahil tablolastirir...
+
+-- 2. yol ;
+SELECT*FROM personel1 WHERE id>='10002' AND id<='10005';
+
+--Ornek 5 : Mehmet Yilmaz ile Veli Han arasinda olan persenol bilgilerini tablolastir..
+
+SELECT*FROM personel1 WHERE isim BETWEEN 'Mehmet Yilmaz' AND 'Veli Han';
+
+--Ornek 6 : id si 10002 ve 10004 arsinda olmayan personelin id ve maasini tablolastir...
+
+SELECT id, maas FROM personel1 WHERE id NOT BETWEEN '10002' AND '10004';
+
+
+/* ======================= SELECT - IN ======================================
+    IN birden fazla mantýksal ifade ile tanýmlayabilecegimiz durumlarý 
+    tek komutla yazabilme imkaný verir...
+
+    SYNTAX:
+    -------
+    SELECT sutun1,sutun2, ...
+    FROM tablo_adý
+    WHERE sutun_adý IN (deger1, deger2, ...);
+/* ========================================================================== */
+
+
+-- Ornek 7 : maasi 4000 5000 7000 olan personelin bilgilerini tablolastir...
+
+SELECT * FROM personel1 WHERE maas IN ('4000','5000','7000');
