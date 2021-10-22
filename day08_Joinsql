@@ -214,3 +214,4 @@ LEFT JOIN personel
 ON bolumler.bolum_id= personel.bolum_id 
 ORDER BY personel.bolum_id DESC, personel.maas DESC ;
 
+select*from isciler;

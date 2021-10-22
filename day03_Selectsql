@@ -22,14 +22,17 @@ INSERT INTO ogrenciler3 VALUES(124, 'Merve Gul', 'Ankara',85);
 INSERT INTO ogrenciler3 VALUES(125, 'Kemal Yasa', 'Istanbul',85);
     
 SELECT * FROM ogrenciler3;
+DROP TABLE ogrenciler3;
     
 --Ornek 1 : Sinav notu 80 den buyuk olan ogrencilerin tum bilgilerini listele...
 
-SELECT*FROM ogrenciler3 WHERE sinav_notu>80;
+SELECT*FROM ogrenciler3 
+WHERE sinav_notu>80;
 
---Ornek 2 : Adresi Ankara olan ogrencilerin isim, ev ve adres bilgilerini listele...
+--Ornek 2 : Adresi Ankara olan ogrencilerin isim ve adres bilgilerini listele...
 
-SELECT isim, adres FROM ogrenciler3 WHERE adres='Ankara';
+SELECT isim, adres FROM ogrenciler3 
+WHERE adres='Ankara';
 -- * hersey demektir... Biseyler belirtirsek ona gore yazdirmis oluruz...
 
 --Ornek 3: id si 124 olan ogrencilerin tum bilgilerini silelim...
@@ -115,7 +118,7 @@ WHERE isim LIKE 'A%';
 -- Ornek 2 :  ismi n harfi ile bitenleri listeleyiniz...
 
 SELECT*FROM personel1
-WHERE isim LIKE 'n%';
+WHERE isim LIKE '%n';
 
 -- Ornek 3 :  isminin 2. harfi e olanlarý listeleyiniz
 
@@ -164,8 +167,13 @@ WHERE isim LIKE 'A______n%';
     Syntax:
     --------
     REGEXP_LIKE(sutun_adý, ‘pattern[] ‘, ‘c’ ] )
-             -- 'c' => case-sentisitive demektir ve default case-sensitive aktiftir.
-     -- 'i' => incase-sentisitive demektir.
+     
+     -- 'c' => case-sentisitive demektir ve default case-sensitive aktiftir.
+     -- 'i' => incase-sentisitive buyuk kucuk harf duyarsiz demektir.
+     -- '|' => veya demektir...
+     -- '^' => kelime baslangici oldugun ifade etmek icin kullanilir...
+     -- '$' => kelime sonu oldugun ifade etmek icin kullanilir...
+     -- [a-zA-Z0-9] => harflarin arasindan ne varsa al gel demektir..
 /* ========================================================================== */
 
 CREATE TABLE kelimeler (

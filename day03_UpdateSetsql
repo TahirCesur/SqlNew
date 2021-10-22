@@ -1,5 +1,14 @@
 ----------------------------------UPDATE SET------------------------------------
-/* ============================================================================
+/* =============================================================================
+
+-- SYNTAX
+----------
+-- UPDATE tablo_adý
+-- SET sutun1 = yeni_deger1, sutun2 = yeni_deger2,...  
+-- WHERE koþul;
+
+================================================================================
+
 Aþaðýdaki gibi tedarikciler adýnda bir tablo oluþturunuz ve vergi_no
 sutununu primary key yapýnýz. Ayrýca aþaðýdaki verileri tabloya giriniz.
 
@@ -59,13 +68,6 @@ INSERT INTO urunler2 VALUES(104, 1006,'TV', 'Ali Bak');
 INSERT INTO urunler2 VALUES(104, 1007,'Phone', 'Aslan Yýlmaz');
     
 SELECT * FROM urunler2;
-
-    
--- SYNTAX
-----------
--- UPDATE tablo_adý
--- SET sutun1 = yeni_deger1, sutun2 = yeni_deger2,...  
--- WHERE koþul;
     
 -- Ornek 1: vergi_no su 101 olan tedarikcinin firma ismini 'LG' olarak guncelleyin...
    
